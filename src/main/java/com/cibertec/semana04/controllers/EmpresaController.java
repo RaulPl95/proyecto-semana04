@@ -48,9 +48,7 @@ public class EmpresaController {
 	}
 
 	@GetMapping("/editar/{id}")
-	public String mostrarFormularioEditar(
-			@PathVariable("id") Long id,
-			Model model) {
+	public String mostrarFormularioEditar(@PathVariable("id") Long id, Model model) {
 
 		Empresa empresa = empresaService.getEmpresaById(id);
 
@@ -60,10 +58,10 @@ public class EmpresaController {
 	}
 
 	@GetMapping("/eliminar/{id}")
-	public String eliminarEmpresa(@PathVariable("id") Long id,Model model) {
+	public String eliminarEmpresa(@PathVariable("id") Long id, Model model) {
 
 		empresaService.eliminarEmpresa(id);
-		
+
 		List<Empresa> listEmpresas = empresaService.getAllEmpresas();
 		model.addAttribute("empresas", listEmpresas);
 
@@ -73,12 +71,11 @@ public class EmpresaController {
 	@GetMapping("/reporte")
 	public String generarReporte(Model model) {
 
-	    List<Empresa> empresas = empresaService.getAllEmpresas();
+		List<Empresa> empresas = empresaService.getAllEmpresas();
 
-	    model.addAttribute("empresas", empresas);
+		model.addAttribute("empresas", empresas);
 
-	    return "empresaReport";
+		return "empresaReport";
 	}
 
 }
-
